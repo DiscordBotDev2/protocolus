@@ -40,6 +40,7 @@ public class boomCommand implements CommandExecutor {
                         packet.getDoubles().write(0, blockLocation.getX());
                         packet.getDoubles().write(1,blockLocation.getY());
                         packet.getDoubles().write(2,blockLocation.getZ());
+                        packet.getFloat().write(0,3.0f);
 
                         try {
                             manager.sendServerPacket(player, packet);
