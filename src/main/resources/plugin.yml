@@ -7,3 +7,6 @@ authors: [ DiscordBotDev2 ]
 description: A plugin that adds several commands.
 website: github.com/discordbotdev2
 depend: [ProtocolLib]
+commands:
+  boom:
+    description: boom

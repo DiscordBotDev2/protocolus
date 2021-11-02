@@ -1,6 +1,7 @@
 package com.github.discordbotdev2.protcolus;
 
 import com.comphenix.protocol.PacketType;
+import com.github.discordbotdev2.protcolus.commands.*;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
 import com.comphenix.protocol.events.ListenerPriority;
@@ -27,6 +28,7 @@ public final class Main extends JavaPlugin {
                 boolean isOnGround = packet.getBooleans().read(0);
             }
         });
+        new boomCommand(this);
     }
 
     @Override
