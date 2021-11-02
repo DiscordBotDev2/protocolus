@@ -1,0 +1,9 @@
+name: Protcolus
+version: '${project.version}'
+main: com.github.discordbotdev2.protcolus.Main
+api-version: 1.17
+prefix: [ PROTO ]
+authors: [ DiscordBotDev2 ]
+description: A plugin that adds several commands.
+website: github.com/discordbotdev2
+depend: [ProtocolLib]
