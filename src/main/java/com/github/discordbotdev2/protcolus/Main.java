@@ -8,8 +8,12 @@ import com.comphenix.protocol.events.ListenerPriority;
 import com.comphenix.protocol.events.PacketAdapter;
 import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.events.PacketEvent;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.ScoreboardManager;
+import org.bukkit.scoreboard.Team;
 
 public final class Main extends JavaPlugin {
 
@@ -17,6 +21,7 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         ProtocolManager manager = ProtocolLibrary.getProtocolManager();
+
         manager.addPacketListener(new PacketAdapter(this, ListenerPriority.NORMAL, PacketType.Play.Client.POSITION) {
             @Override
             public void onPacketReceiving(PacketEvent event) {
@@ -29,6 +34,9 @@ public final class Main extends JavaPlugin {
             }
         });
         new boomCommand(this);
+        FileConfiguration config = getConfig();
+
+
     }
 
     @Override
