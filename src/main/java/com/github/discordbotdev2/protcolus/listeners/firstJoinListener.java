@@ -32,6 +32,7 @@ public class firstJoinListener implements Listener {
     @EventHandler
     public void OnJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+        String playerName = player.getName();
         Random random = new Random();
         FileConfiguration config = plugin.getConfig();
         if (player.hasPlayedBefore()) {
@@ -56,6 +57,10 @@ public class firstJoinListener implements Listener {
         Team Red = board.registerNewTeam("Red");
         int playerLives = (int) config.get(player.getName());
         if (playerLives >= 4) {
+            VeryGreen.removePlayer(player);
+            Red.removePlayer(player);
+            Green.removePlayer(player);
+            Yellow.removePlayer(player);
             VeryGreen.addPlayer(player);
             VeryGreen.allowFriendlyFire();
             VeryGreen.setPrefix(ChatColor.DARK_GREEN+"");
@@ -63,6 +68,10 @@ public class firstJoinListener implements Listener {
             player.setPlayerListName(player.getDisplayName());
         }
         if (playerLives == 3) {
+            VeryGreen.removePlayer(player);
+            Red.removePlayer(player);
+            Green.removePlayer(player);
+            Yellow.removePlayer(player);
             Green.addPlayer(player);
             Green.allowFriendlyFire();
             Green.setPrefix(ChatColor.GREEN+"");
@@ -70,6 +79,10 @@ public class firstJoinListener implements Listener {
             player.setPlayerListName(player.getDisplayName());
         }
         if (playerLives == 2) {
+            VeryGreen.removePlayer(player);
+            Red.removePlayer(player);
+            Green.removePlayer(player);
+            Yellow.removePlayer(player);
             Yellow.addPlayer(player);
             Yellow.allowFriendlyFire();
             Yellow.setPrefix(ChatColor.YELLOW+"");
@@ -77,6 +90,10 @@ public class firstJoinListener implements Listener {
             player.setPlayerListName(player.getDisplayName());
         }
         if (playerLives == 1) {
+            VeryGreen.removePlayer(player);
+            Red.removePlayer(player);
+            Green.removePlayer(player);
+            Yellow.removePlayer(player);
             Red.addPlayer(player);
             Red.allowFriendlyFire();
             Red.setPrefix(ChatColor.RED+"");
@@ -84,36 +101,8 @@ public class firstJoinListener implements Listener {
             player.setPlayerListName(player.getDisplayName());
         }
         if (playerLives == 0) {
-            BanList banList = new BanList() {
-                @Override
-                public BanEntry getBanEntry(String target) {
-                    return null;
-                }
-
-                @Override
-                public BanEntry addBan(String target, String reason, Date expires, String source) {
-                    return null;
-                }
-
-                @Override
-                public Set<BanEntry> getBanEntries() {
-                    return null;
-                }
-
-                @Override
-                public boolean isBanned(String target) {
-                    return false;
-                }
-
-                @Override
-                public void pardon(String target) {
-
-                }
-            };
-            UUID uuid = player.getUniqueId();
-            String suuid = uuid.toString();
-            banList.addBan(suuid, "Lost all lives.",null ,null);
-            player.kickPlayer("Lost all lives.");
+            Bukkit.getBanList(BanList.Type.IP).addBan(playerName,"LOST ALL LIVES", null, null);
+            player.kickPlayer("LOST ALL LIVES");
         }
     }
 }

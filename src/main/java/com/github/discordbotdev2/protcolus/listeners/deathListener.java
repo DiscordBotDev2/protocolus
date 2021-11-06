@@ -83,36 +83,8 @@ public class deathListener implements Listener {
             player.setPlayerListName(player.getDisplayName());
         }
         if (playerLives == 0) {
-            BanList banList = new BanList() {
-                @Override
-                public BanEntry getBanEntry(String target) {
-                    return null;
-                }
-
-                @Override
-                public BanEntry addBan(String target, String reason, Date expires, String source) {
-                    return null;
-                }
-
-                @Override
-                public Set<BanEntry> getBanEntries() {
-                    return null;
-                }
-
-                @Override
-                public boolean isBanned(String target) {
-                    return false;
-                }
-
-                @Override
-                public void pardon(String target) {
-
-                }
-            };
-            UUID uuid = player.getUniqueId();
-            String suuid = uuid.toString();
-            banList.addBan(suuid, "Lost all lives.",null ,null);
-            player.kickPlayer("Lost all lives.");
+            Bukkit.getBanList(BanList.Type.IP).addBan(playerName,"LOST ALL LIVES", null, null);
+            player.kickPlayer("LOST ALL LIVES");
         }
     }
 
