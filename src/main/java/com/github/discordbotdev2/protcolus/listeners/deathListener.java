@@ -17,7 +17,7 @@ import org.bukkit.scoreboard.Team;
 import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
-
+@SuppressWarnings("deprecation")
 public class deathListener implements Listener {
     private Main plugin;
 
@@ -55,6 +55,10 @@ public class deathListener implements Listener {
         Team Red = board.registerNewTeam("Red");
         int playerLives = (int) config.get(player.getName());
         if (playerLives >= 4) {
+            VeryGreen.removePlayer(player);
+            Red.removePlayer(player);
+            Green.removePlayer(player);
+            Yellow.removePlayer(player);
             VeryGreen.addPlayer(player);
             VeryGreen.allowFriendlyFire();
             VeryGreen.setPrefix(ChatColor.DARK_GREEN+"");
@@ -62,6 +66,10 @@ public class deathListener implements Listener {
             player.setPlayerListName(player.getDisplayName());
         }
         if (playerLives == 3) {
+            VeryGreen.removePlayer(player);
+            Red.removePlayer(player);
+            Green.removePlayer(player);
+            Yellow.removePlayer(player);
             Green.addPlayer(player);
             Green.allowFriendlyFire();
             Green.setPrefix(ChatColor.GREEN+"");
@@ -69,6 +77,10 @@ public class deathListener implements Listener {
             player.setPlayerListName(player.getDisplayName());
         }
         if (playerLives == 2) {
+            VeryGreen.removePlayer(player);
+            Red.removePlayer(player);
+            Green.removePlayer(player);
+            Yellow.removePlayer(player);
             Yellow.addPlayer(player);
             Yellow.allowFriendlyFire();
             Yellow.setPrefix(ChatColor.YELLOW+"");
@@ -76,6 +88,10 @@ public class deathListener implements Listener {
             player.setPlayerListName(player.getDisplayName());
         }
         if (playerLives == 1) {
+            VeryGreen.removePlayer(player);
+            Red.removePlayer(player);
+            Green.removePlayer(player);
+            Yellow.removePlayer(player);
             Red.addPlayer(player);
             Red.allowFriendlyFire();
             Red.setPrefix(ChatColor.RED+"");
@@ -83,6 +99,10 @@ public class deathListener implements Listener {
             player.setPlayerListName(player.getDisplayName());
         }
         if (playerLives == 0) {
+            VeryGreen.removePlayer(player);
+            Red.removePlayer(player);
+            Green.removePlayer(player);
+            Yellow.removePlayer(player);
             Bukkit.getBanList(BanList.Type.IP).addBan(playerName,"LOST ALL LIVES", null, null);
             player.kickPlayer("LOST ALL LIVES");
         }

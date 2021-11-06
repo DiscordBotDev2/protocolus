@@ -1,7 +1,6 @@
 package com.github.discordbotdev2.protcolus.listeners;
 
 import com.github.discordbotdev2.protcolus.Main;
-import org.bukkit.BanEntry;
 import org.bukkit.BanList;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -9,17 +8,14 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
 
-import java.util.Date;
 import java.util.Random;
-import java.util.Set;
-import java.util.UUID;
 
+@SuppressWarnings("deprecation")
 public class firstJoinListener implements Listener {
     private Main plugin;
 
@@ -101,6 +97,10 @@ public class firstJoinListener implements Listener {
             player.setPlayerListName(player.getDisplayName());
         }
         if (playerLives == 0) {
+            VeryGreen.removePlayer(player);
+            Red.removePlayer(player);
+            Green.removePlayer(player);
+            Yellow.removePlayer(player);
             Bukkit.getBanList(BanList.Type.IP).addBan(playerName,"LOST ALL LIVES", null, null);
             player.kickPlayer("LOST ALL LIVES");
         }
