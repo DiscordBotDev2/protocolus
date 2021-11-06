@@ -33,6 +33,6 @@ public class launchCommand implements CommandExecutor {
         }
 
 
-        return false;
+        return true;
     }
 }

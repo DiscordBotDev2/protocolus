@@ -31,10 +31,6 @@ public class firstJoinListener implements Listener {
         String playerName = player.getName();
         Random random = new Random();
         FileConfiguration config = plugin.getConfig();
-        if (player.hasPlayedBefore()) {
-            config.set(player.getName(),(int)Math.floor(Math.random()*(6-2+1)+2));
-            plugin.saveConfig();
-        }
         ScoreboardManager sManager = new ScoreboardManager() {
             @Override
             public Scoreboard getMainScoreboard() {
